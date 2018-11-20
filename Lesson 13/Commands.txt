@@ -1,13 +1,13 @@
-$ wget https://gethstore.blob.core.windows.net/builds/geth-linux- arm7-1.5.6-2a609af5.tar.gz
-$ tar -zxvf geth-linux-arm7-1.5.6-2a609af5.tar
- $ ./geth init genesis.json
+$ wget https://gethstore.blob.core.windows.net/builds/geth-linux-arm64-1.8.18-58632d44.tar.gz
+$ tar -zxvf geth-linux-arm64-1.8.18-58632d44.tar.gz
+$ sudo mv geth-linux-arm64-1.8.18-58632d44/geth /usr/local/bin
+$ geth init genesis.json
 > admin.nodeInfo
-$ geth --datadir .ethereum/privatenet/ --networkid 786 --maxpeers 5 --rpc --rpcapi web3,eth,debug,personal,net --rpcport 9001 --rpccorsdomain "*" -- port 30301 --identity "drequinox"  
-$ ./geth --networkid 786 --maxpeers 5 --rpc --rpcapi web3,eth,debug,personal,net --rpccorsdomain "*" --port 30302 --identity "raspberry" 
-$ geth attach 
-$ geth attach ipc:.ethereum/privatenet/geth.ipc  
-$ curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+$ nohup geth --networkid=9001 --datadir ~/private_network --port "30303" --nodiscover --cache=1024 --rpc --rpcport "8545" --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcapi "db,eth,net,web3,personal,debug" --password ~/private_network/password --unlock 1d5d5c388ba5a040239ec1f97791d2e3ab946677 --etherbase 1d5d5c388ba5a040239ec1f97791d2e3ab946677 js ~/private_network/automine.js &
+$ geth attach
+$ geth attach ~/private_network/geth.ipc
+$ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
  $ sudo apt-get install nodejs
 $ npm install onoff
-$ truffle migrate  
-$ node index.js  
+$ truffle migrate
+$ node index.js

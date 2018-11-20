@@ -1,0 +1,8 @@
+$ nohup geth --networkid=9001 --datadir ~/private_network --port "30303" --nodiscover --cache=1024 --rpc --rpcport "8545" --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcapi "db,eth,net,web3,personal,debug" --password ~/private_network/password --unlock 1d5d5c388ba5a040239ec1f97791d2e3ab946677 --etherbase 1d5d5c388ba5a040239ec1f97791d2e3ab946677 js ~/private_network/automine.js &
+$ geth attach ~/private_network/geth.ipc
+$ personal.listAccounts
+$ personal.unlockAccount(eth.accounts[1])
+$ sudo apt-get install golang-go -y
+$ wget https://dist.ipfs.io/go-ipfs/v0.4.10/go-ipfs_v0.4.10_linux-386.tar.gz
+$ tar xvfz go-ipfs_v0.4.10_linux-386.tar.gz
+$ sudo mv go-ipfs/ipfs /usr/local/bin/ipfs
